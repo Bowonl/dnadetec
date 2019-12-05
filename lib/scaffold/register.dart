@@ -19,9 +19,10 @@ class _RegisterState extends State<Register> {
     Color color = Colors.purple;
     return Container(
       width: 250.0,
-      child: TextFormField(onSaved: (String string){
-        name = string.trim();
-      },
+      child: TextFormField(
+        onSaved: (String string) {
+          name = string.trim();
+        },
         decoration: InputDecoration(
           icon: Icon(
             Icons.face,
@@ -42,9 +43,10 @@ class _RegisterState extends State<Register> {
     Color color = Colors.green;
     return Container(
       width: 250.0,
-      child: TextFormField(onSaved: (String string){
-        user = string.trim();
-      },
+      child: TextFormField(
+        onSaved: (String string) {
+          user = string.trim();
+        },
         decoration: InputDecoration(
           icon: Icon(
             Icons.account_circle,
@@ -66,6 +68,9 @@ class _RegisterState extends State<Register> {
     return Container(
       width: 250.0,
       child: TextFormField(
+        onSaved: (String string) {
+          password = string.trim();
+        },
         decoration: InputDecoration(
           icon: Icon(
             Icons.lock,
@@ -127,10 +132,9 @@ class _RegisterState extends State<Register> {
       maxHeight: 480.0,
     );
 
-setState(() {
-  file = galleryFile;
-});
-
+    setState(() {
+      file = galleryFile;
+    });
   }
 
   Widget showButton() {
@@ -156,7 +160,9 @@ setState(() {
   Widget registerButton() {
     return IconButton(
       icon: Icon(Icons.cloud_upload),
-      onPressed: () {},
+      onPressed: () {
+        formKey.currentState.save();
+      },
     );
   }
 
@@ -167,8 +173,9 @@ setState(() {
         actions: <Widget>[registerButton()],
         title: Text('Register'),
       ),
-      body: Form(key: formKey,
-         child: ListView(
+      body: Form(
+        key: formKey,
+        child: ListView(
           padding: EdgeInsets.all(30.0),
           children: <Widget>[
             avatarImage(),
