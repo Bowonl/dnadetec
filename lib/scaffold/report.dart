@@ -7,12 +7,12 @@ import 'package:dnadetec/utility/normal_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class Register extends StatefulWidget {
+class Report extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _ReportState createState() => _ReportState();
 }
 
-class _RegisterState extends State<Register> {
+class _ReportState extends State<Report> {
 // Field
   File file;
   String name, user, password;
@@ -162,7 +162,7 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Widget registerButton() {
+  Widget ReportButton() {
     return IconButton(
       icon: Icon(Icons.cloud_upload),
       onPressed: () {
@@ -217,8 +217,8 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[registerButton()],
-        title: Text('ลงทะเบียน'),
+        actions: <Widget>[ReportButton()],
+        title: Text('งานตรวจสอบ'),
       ),
       body: Form(
         key: formKey,

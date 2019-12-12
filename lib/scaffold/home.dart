@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:dnadetec/models/user_model.dart';
-import 'package:dnadetec/scaffold/MyService.dart';
+import 'package:dnadetec/scaffold/menu.dart';
 import 'package:dnadetec/scaffold/register.dart';
 import 'package:dnadetec/utility/normal_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import 'menu.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
   Widget signInButton() {
     return RaisedButton(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-      color: Colors.pink.shade300,
+      color: Colors.orange.shade900,
       child: Text(
         'Sign In',
         style: TextStyle(color: Colors.white),
@@ -44,7 +45,7 @@ class _HomeState extends State<Home> {
 
   Future<void> checkAuthen() async {
     String url =
-        'https://www.androidthai.in.th/bow/getUserWhereUserMaster.php?isAdd=true&User=$user';
+        'http://infobizplus.com/DNA/getUser.php?isAdd=true&User=$user';
 
     Response response = await Dio().get(url);
     print('response = $response');
@@ -62,7 +63,7 @@ class _HomeState extends State<Home> {
       if (password == userModel.password) {
         MaterialPageRoute materialPageRoute =
             MaterialPageRoute(builder: (BuildContext context) {
-          return MyService();
+          return Menu();
         });
         Navigator.of(context).pushAndRemoveUntil(materialPageRoute,
             (Route<dynamic> route) {
@@ -143,7 +144,7 @@ class _HomeState extends State<Home> {
       style: TextStyle(
         fontSize: 30.0,
         fontWeight: FontWeight.bold,
-        color: Colors.pink.shade300,
+        color: Colors.orange.shade900,
       ),
     );
   }

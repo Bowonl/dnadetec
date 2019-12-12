@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:dnadetec/models/detail_Model.dart';
+import 'package:dnadetec/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class MyService extends StatefulWidget {
@@ -11,7 +11,7 @@ class MyService extends StatefulWidget {
 
 class _MyServiceState extends State<MyService> {
 // Field
-  List<DetailModel> detailModels = List();
+  List<UserModel> userModels = List();
 
 // Method
   @override
@@ -26,21 +26,21 @@ class _MyServiceState extends State<MyService> {
     var result = json.decode(response.data);
 
     for (var map in result) {
-      DetailModel detailModel = DetailModel.fromJson(map);
+      UserModel userModel = UserModel.fromJson(map);
       setState(() {
-        detailModels.add(detailModel);
+        userModels.add(userModel);
       });
     }
   }
 
   Widget showImage(int index) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.4,
-      child: Image.network(detailModels[index].imgDNA),
+      width: MediaQuery.of(context).size.width * 0.3,
+      child: Image.network(userModels[index].avatar),
     );
   }
   Widget showText(int index){
-    return Text(detailModels[index].name);
+    return Text(userModels[index].name);
     
   }
 
@@ -51,7 +51,7 @@ class _MyServiceState extends State<MyService> {
         title: Text('ผลการวิเคราะห์'),
       ),
       body: ListView.builder(
-        itemCount: detailModels.length,
+        itemCount: userModels.length,
         itemBuilder: (BuildContext context, int index) {
           return Row(
             children: <Widget>[
